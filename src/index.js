@@ -7,6 +7,7 @@ module.exports = function toReadable(number) {
         switch (strNumber[strNumber.length - 1]) {
             case "0":
                 firstN = "zero";
+                break;
             case "1":
                 firstN = "one";
                 break;
@@ -38,23 +39,24 @@ module.exports = function toReadable(number) {
         return firstN;
     } else if (number > 9 && number < 100) {
         if (strNumber[strNumber.length - 2] === "1") {
-            switch (strNumber[strNumber.length - 2]) {
+            switch (strNumber[strNumber.length - 1]) {
                 case "0":
                     firstN = "ten";
+                break;
                 case "1":
                     firstN = "eleven";
                     break;
                 case "2":
-                    firstN = "twelf";
+                    firstN = "twelve";
                     break;
                 case "3":
-                    firstN = "threeteen";
+                    firstN = "thirteen";
                     break;
                 case "4":
                     firstN = "fourteen";
                     break;
                 case "5":
-                    firstN = "fiveteen";
+                    firstN = "fifteen";
                     break;
                 case "6":
                     firstN = "sixteen";
@@ -63,7 +65,7 @@ module.exports = function toReadable(number) {
                     firstN = "seventeen";
                     break;
                 case "8":
-                    firstN = "eightteen";
+                    firstN = "eighteen";
                     break;
                 case "9":
                     firstN = "nineteen";
@@ -71,7 +73,7 @@ module.exports = function toReadable(number) {
             }
             return firstN;
         } else if (Number(strNumber[strNumber.length - 2]) > 1) {
-            switch (strNumber[strNumber.length - 1]) {
+            switch (strNumber[strNumber.length - 2]) {
                 case "2":
                     secondN = "twenty";
                     break;
@@ -99,8 +101,9 @@ module.exports = function toReadable(number) {
             }
             switch (strNumber[strNumber.length - 1]) {
                 case "0":
-                    firstN = "zero";
-                case "":
+                    firstN = "";
+                    break;
+                case "1":
                     firstN = "one";
                     break;
                 case "2":
@@ -128,7 +131,7 @@ module.exports = function toReadable(number) {
                     firstN = "nine";
                     break;
             }
-            return secondN + firstN;
+            return `${secondN}${firstN ? " " : ""}${firstN}`;
         }
     } else if (number > 99) {
         if (strNumber[strNumber.length - 2] === "1") {
@@ -194,98 +197,100 @@ module.exports = function toReadable(number) {
                     break;
             }
             return thirdN + " hundred " + firstN;
-        }else {
-        switch (strNumber[strNumber.length - 3]) {
-            case "1":
-                thirdN = "one";
-                break;
-            case "2":
-                thirdN = "two";
-                break;
-            case "3":
-                thirdN = "three";
-                break;
-            case "4":
-                thirdN = "four";
-                break;
-            case "5":
-                thirdN = "five";
-                break;
-            case "6":
-                thirdN = "six";
-                break;
-            case "7":
-                thirdN = "seven";
-                break;
-            case "8":
-                thirdN = "eight";
-                break;
-            case "9":
-                thirdN = "nine";
-                break;
-        }
-        switch (strNumber[strNumber.length - 2]) {
-            case "2":
-                secondN = "twenty";
-                break;
-            case "3":
-                secondN = "thirty";
-                break;
-            case "4":
-                secondN = "forty";
-                break;
-            case "5":
-                secondN = "fifty";
-                break;
-            case "6":
-                secondN = "sixty";
-                break;
-            case "7":
-                secondN = "seventy";
-                break;
-            case "8":
-                secondN = "eighty";
-                break;
-            case "9":
-                secondN = "ninety";
-                break;
-        }
-        switch (strNumber[strNumber.length - 1]) {
-            case "0":
-                firstN = "";
-                break;
-            case "1":
-                firstN = "one";
-                break;
-            case "2":
-                firstN = "two";
-                break;
-            case "3":
-                firstN = "three";
-                break;
-            case "4":
-                firstN = "four";
-                break;
-            case "5":
-                firstN = "five";
-                break;
-            case "6":
-                firstN = "six";
-                break;
-            case "7":
-                firstN = "seven";
-                break;
-            case "8":
-                firstN = "eight";
-                break;
-            case "9":
-                firstN = "nine";
-                break;
-        }
+        } else {
+            switch (strNumber[strNumber.length - 3]) {
+                case "1":
+                    thirdN = "one";
+                    break;
+                case "2":
+                    thirdN = "two";
+                    break;
+                case "3":
+                    thirdN = "three";
+                    break;
+                case "4":
+                    thirdN = "four";
+                    break;
+                case "5":
+                    thirdN = "five";
+                    break;
+                case "6":
+                    thirdN = "six";
+                    break;
+                case "7":
+                    thirdN = "seven";
+                    break;
+                case "8":
+                    thirdN = "eight";
+                    break;
+                case "9":
+                    thirdN = "nine";
+                    break;
+            }
+            switch (strNumber[strNumber.length - 2]) {
+                case "2":
+                    secondN = "twenty";
+                    break;
+                case "3":
+                    secondN = "thirty";
+                    break;
+                case "4":
+                    secondN = "forty";
+                    break;
+                case "5":
+                    secondN = "fifty";
+                    break;
+                case "6":
+                    secondN = "sixty";
+                    break;
+                case "7":
+                    secondN = "seventy";
+                    break;
+                case "8":
+                    secondN = "eighty";
+                    break;
+                case "9":
+                    secondN = "ninety";
+                    break;
+            }
+            switch (strNumber[strNumber.length - 1]) {
+                case "0":
+                    firstN = "";
+                    break;
+                case "1":
+                    firstN = "one";
+                    break;
+                case "2":
+                    firstN = "two";
+                    break;
+                case "3":
+                    firstN = "three";
+                    break;
+                case "4":
+                    firstN = "four";
+                    break;
+                case "5":
+                    firstN = "five";
+                    break;
+                case "6":
+                    firstN = "six";
+                    break;
+                case "7":
+                    firstN = "seven";
+                    break;
+                case "8":
+                    firstN = "eight";
+                    break;
+                case "9":
+                    firstN = "nine";
+                    break;
+            }
 
-        return thirdN + " hundred " + secondN + " " + firstN;
-    }
-}else {
+            return (
+                `${thirdN} hundred${secondN || firstN ? ' ' : ''}` +
+                `${secondN}${secondN && firstN ? " " : ""}` + firstN);
+        }
+    } else {
         return "more one thousand";
     }
-}
+};
